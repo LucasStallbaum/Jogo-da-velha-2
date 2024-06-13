@@ -6,7 +6,7 @@ body {
 #IndexPage{
     background-color: #130912;
     width: 100%;
-    height: 892px;
+    height: 892px; 
     padding-top: 80px;
 }
 #Title{
@@ -14,7 +14,23 @@ body {
     padding-bottom: 5%;
 }
 nav{
+    height: 70px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+#teste0{
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    background-color: rgb(4, 0, 255);
+}
+#teste1{
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    background-color: red;
 }
 .navbar-custom {
     background-color: #b14623;
@@ -50,7 +66,6 @@ nav{
     background-color: #79315e;
 }
 
-/*PACMAN ICON GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .grid {
     display: grid;
@@ -63,7 +78,7 @@ nav{
 .cell {
     width: 160px;
     height: 160px;
-    background-color: #130912;
+    background-color: #130912c7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,6 +88,33 @@ nav{
 .cell:hover {
     background-color: #3e1c33;
 }
+.WarningLast{
+    width:  160px;
+    height: 160px;
+    background-color: #180c18;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    cursor: pointer;
+    transition: width 1s, height 1s, background-color 1s;
+}
+
+.Warning {
+    width: 160px;
+    height: 160px;
+    background-color: #130913;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32.5px;
+    cursor: pointer;
+    transition: width 1s, height 1s, background-color 1s;
+}
+.Warning {
+    background-color: #130913;
+}
+/*PACMAN ICON GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .pacman {
     box-sizing: border-box;
     position: relative;
@@ -131,3 +173,35 @@ nav{
 .start-btn i {
     margin-right: 8px;
 }
+
+/*X ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.x-logo {
+    width: 100px;
+    height: 100px;
+    position: relative;
+  }
+  
+  .line {
+    position: absolute;
+    width: 2px;
+    background-color: black;
+  }
+  
+  .line1 {
+    transform: rotate(45deg);
+  }
+  
+  .line2 {
+    transform: rotate(-45deg);
+  }
+  
+  
+/*Circle ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    transition: width 0.5s, height 0.5s;
+  }
+  
