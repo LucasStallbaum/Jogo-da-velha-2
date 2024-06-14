@@ -18,20 +18,6 @@ nav{
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-#teste0{
-    width: 100px;
-    height: 100px;
-    color: #fff;
-    text-align: center;
-    background-color: rgb(4, 0, 255);
-}
-#teste1{
-    width: 100px;
-    height: 100px;
-    color: #fff;
-    text-align: center;
-    background-color: red;
-}
 .navbar-custom {
     background-color: #b14623;
 }
@@ -66,7 +52,6 @@ nav{
     background-color: #79315e;
 }
 
-
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 160px);
@@ -78,6 +63,7 @@ nav{
 .cell {
     width: 160px;
     height: 160px;
+    font-size: 100px;
     background-color: #130912c7;
     display: flex;
     justify-content: center;
@@ -113,6 +99,20 @@ nav{
 }
 .Warning {
     background-color: #130913;
+}
+
+.set{
+    padding-top: -10px;
+}
+.rodape{
+    
+    font-size: 10px; 
+    text-align: center;
+}
+
+.Winner{
+    background-color: #f6921d;
+    color: #180c18;
 }
 /*PACMAN ICON GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .pacman {
@@ -150,13 +150,32 @@ nav{
     transform: rotate(-45deg)
 }
 
+.jogada {
+    width: 400px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    margin-right: 10px; 
+}
+#jogada {
+    display: inline-block;
+}
+
+.points {
+    text-align: center;
+}
+    
+.inline{
+    display: inline-block;
+}
+
 
 /*START GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .start-btn {
     font-size: 24px;
     color: #130912;
-    background-color: #f6921d;;
+    background-color: #f6921d;
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -173,35 +192,3 @@ nav{
 .start-btn i {
     margin-right: 8px;
 }
-
-/*X ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-.x-logo {
-    width: 100px;
-    height: 100px;
-    position: relative;
-  }
-  
-  .line {
-    position: absolute;
-    width: 2px;
-    background-color: black;
-  }
-  
-  .line1 {
-    transform: rotate(45deg);
-  }
-  
-  .line2 {
-    transform: rotate(-45deg);
-  }
-  
-  
-/*Circle ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-.circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: black;
-    transition: width 0.5s, height 0.5s;
-  }
-  
