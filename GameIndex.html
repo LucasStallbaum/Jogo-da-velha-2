@@ -8,43 +8,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="CssGame.css">
     <title>Jogo da Velha #2</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>        
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <i class="pacman"></i>&nbsp;
-            <div class="points">
-                <span>PontuaÃ§Ãµes&nbsp;&nbsp; </span>
-                <span class="inline">Player1 : <div id="PlayerX" class="inline"></div></span>&nbsp;|
-                <span class="inline">Player2 : <div id="PlayerO" class="inline"></div></span>
+        <div class="container-fluid nav-content">
+            <div class="d-flex align-items-center">
+                <i class="pacman"></i>&nbsp;
+                <div class="points">
+                    <span>Pontuações&nbsp;&nbsp;</span>
+                    <span class="inline">P1: <div id="PlayerX" class="inline"></div></span>&nbsp;
+                    <span class="inline">P2: <div id="PlayerO" class="inline"></div></span>
+                </div>
             </div>
-            <div class="jogada">Vez da Jogada : <div id="jogada"></div></div>
+            <div class="jogada">Vez: <div id="jogada" class="inline"></div></div>
         </div>
     </nav>
     <div id="IndexPage">
         <div class="card text-center cdDiv shadow">
-            <div class="card-header cdHeader d-flex align-items-cente">
+            <div class="card-header cdHeader">
                 <h5 class="titleGame">Jogo da velha #2</h5>
                 <input title="Reiniciar Jogo" type="button" id="Reiniciar" value="X">
             </div>
             <div class="card-body cdBody">
                 <div class="grid GroupDiv"> 
-                    <div id="1"class="cell card options" data-cell></div>
-                    <div id="2"class="cell card options" data-cell></div>
-                    <div id="3"class="cell card options" data-cell></div>
-                    <div id="4"class="cell card options" data-cell></div>
-                    <div id="5"class="cell card options" data-cell></div>
-                    <div id="6"class="cell card options" data-cell></div>
-                    <div id="7"class="cell card options" data-cell></div>
-                    <div id="8"class="cell card options" data-cell></div>
-                    <div id="9"class="cell card options" data-cell></div>
+                    <div id="1" class="cell card options" data-cell></div>
+                    <div id="2" class="cell card options" data-cell></div>
+                    <div id="3" class="cell card options" data-cell></div>
+                    <div id="4" class="cell card options" data-cell></div>
+                    <div id="5" class="cell card options" data-cell></div>
+                    <div id="6" class="cell card options" data-cell></div>
+                    <div id="7" class="cell card options" data-cell></div>
+                    <div id="8" class="cell card options" data-cell></div>
+                    <div id="9" class="cell card options" data-cell></div>
                 </div>
             </div>
             <div class="card-footer text-body-secondary titleBottom">
-                <span class="rodape">  Desenvolvido por @Lucas Stallbaum.   Version beta</span>
+                <span class="rodape">Desenvolvido por @Lucas Stallbaum. Version beta</span>
             </div>
         </div>
     </div>

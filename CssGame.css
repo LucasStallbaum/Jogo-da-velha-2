@@ -1,19 +1,23 @@
 body {
     font-family: 'Press Start 2P', cursive;
     color: white;
-    text-align: center;
-}
-#IndexPage{
     background-color: #130912;
-    width: 100%;
-    height: 892px; 
-    padding-top: 80px;
+    min-height: 100vh;
 }
-#Title{
+
+#IndexPage {
+    padding: 20px 0;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+}
+
+#Title {
     margin: auto;
     padding-bottom: 5%;
 }
-nav{
+
+nav {
     height: 70px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
 }
@@ -21,32 +25,39 @@ nav{
 .navbar-custom {
     background-color: #b14623;
 }
-.cdDiv{
-    width: 700px; 
-    height: 700px; 
+
+.cdDiv {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    min-height: 500px;
     background-color: #3e1c33;
     margin: auto;
 }
-.cdBody{
-    background-color: #602749;
 
+.cdBody {
+    background-color: #602749;
+    padding: 15px;
 }
-.titleGame{
-    text-align: left;
-    padding-top: 7px;
+
+.titleGame {
     color: #f6921d;
-    font-size: 14px; 
+    font-size: 14px;
     margin: 0;
-    margin-right: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.titleBottom{
-    font-size: 8px; 
+
+.titleBottom {
+    font-size: 8px;
 }
+
 #Reiniciar {
     background-color: #602749;
     color: #f6921d;
     border: none;
-    cursor: pointer; /* Adiciona o cursor pointer */
+    cursor: pointer;
 }
 
 #Reiniciar:hover {
@@ -55,67 +66,97 @@ nav{
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 160px);
-    grid-template-rows: repeat(3, 160px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 8px;
-    padding-left: 12%;
-    padding-TOP: 4%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 500px;
+    margin: 0 auto;
 }
+
 .cell {
-    width: 160px;
-    height: 160px;
-    font-size: 100px;
+    width: 100%;
+    height: 100%;
     background-color: #130912c7;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 32px;
     cursor: pointer;
+    aspect-ratio: 1/1;
 }
-.cell:hover {
+
+/* Hover na div so roda quando não tem a classe WarningLast */
+.cell:not(.WarningLast):not(.Winner):hover {
     background-color: #3e1c33;
 }
-.WarningLast{
-    width:  160px;
-    height: 160px;
+
+.cell.WarningLast,.cell.Winner {
+    pointer-events: none;
+    cursor: default;
+}
+
+.WarningLast, .Warning {
+    width: 100%;
+    height: 100%;
     background-color: #180c18;
+    color: #ff0000;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 32px;
     cursor: pointer;
     transition: width 1s, height 1s, background-color 1s;
+    aspect-ratio: 1/1;
 }
 
-.Warning {
-    width: 160px;
-    height: 160px;
-    background-color: #130913;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 32.5px;
-    cursor: pointer;
-    transition: width 1s, height 1s, background-color 1s;
-}
 .Warning {
     background-color: #130913;
 }
 
-.set{
-    padding-top: -10px;
-}
-.rodape{
-    
-    font-size: 10px; 
+.rodape {
+    font-size: 10px;
     text-align: center;
 }
 
-.Winner{
+.Winner {
     background-color: #f6921d;
     color: #180c18;
 }
-/*PACMAN ICON GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/* Navigation */
+.nav-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.points {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.jogada {
+    text-align: right;
+    margin: 5px 0;
+}
+
+.inline {
+    display: inline-block;
+}
+
+/* Card header */
+.cdHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+/* PACMAN ICON */
 .pacman {
     box-sizing: border-box;
     position: relative;
@@ -126,6 +167,7 @@ nav{
     border-bottom: 2px solid;
     border-left: 2px solid
 }
+
 .pacman::after,
 .pacman::before {
     content: "";
@@ -133,6 +175,7 @@ nav{
     position: absolute;
     box-sizing: border-box
 }
+
 .pacman::before {
     background: currentColor;
     top: 5px;
@@ -141,6 +184,7 @@ nav{
     height: 2px;
     left: -5px
 }
+
 .pacman::after {
     width: 18px;
     height: 18px;
@@ -151,45 +195,60 @@ nav{
     transform: rotate(-45deg)
 }
 
-.jogada {
-    width: 400px;
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
-    margin-right: 10px; 
-}
-#jogada {
-    display: inline-block;
-}
-
-.points {
-    text-align: center;
-}
+@media (max-width: 768px) {
+    .titleGame {
+        font-size: 12px;
+    }
     
-.inline{
-    display: inline-block;
+    .grid {
+        max-width: 400px;
+    }
+    
+    .cell, .WarningLast, .Warning {
+        font-size: 28px;
+    }
+    
+    .nav-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .points, .jogada {
+        text-align: left;
+        width: 100%;
+        font-size: 12px;
+    }
 }
 
-
-/*START GG//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-.start-btn {
-    font-size: 24px;
-    color: #130912;
-    background-color: #f6921d;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+@media (max-width: 576px) {
+    .titleGame {
+        font-size: 10px;
+        margin-right: 20px;
+    }
+    
+    .grid {
+        max-width: 300px;
+    }
+    
+    .cell, .WarningLast, .Warning {
+        font-size: 24px;
+    }
+    
+    .rodape {
+        font-size: 8px;
+    }
 }
 
-.start-btn:hover {
-    background-color: #cf822a;;
-}
-
-.start-btn i {
-    margin-right: 8px;
+@media (max-width: 400px) {
+    .grid {
+        max-width: 250px;
+    }
+    
+    .cell, .WarningLast, .Warning {
+        font-size: 20px;
+    }
+    
+    .titleGame {
+        font-size: 8px;
+    }
 }

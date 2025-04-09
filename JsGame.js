@@ -1,7 +1,8 @@
 $(document).ready(function() {
     let arrayElementsEven = []; //Par
     let arrayElementsOdd  = []; //Impar
-    let arrayElements     = [];    //Geral
+    let arrayElements     = []; //Geral
+
     //Distingue quem é o player da jogada
     let player            = 0;
     let jogoIniciado      = false;
@@ -23,93 +24,66 @@ $(document).ready(function() {
     });
 
     function Iniciar(){
+
         $('#PlayerX').html(PointsEven);
         $('#PlayerO').html(PointsOdd);
 
-        $('#jogada').html('X');
+        $('#jogada').html('X')
         $('.options').on('click', function() {
-            var OptionSelect = $(this).attr('id');
+            var OptionSelect = `#${$(this).attr('id')}`;
 
             // Verifica se o item já está no array antes de adicionar
-            if(!arrayElements.includes(OptionSelect)){
+            if(!arrayElements.includes($(this).attr('id'))){
                 if (isEven(player)) {
-                    EvenPlayer(OptionSelect);
+                    ActionPlayer("Even", OptionSelect)
                 }else if (isOdd(player)) {
-                    OddPlayer(OptionSelect);    
+                    ActionPlayer("Odd", OptionSelect)
                 };
             } else {
-                ElementChoice = "#" + OptionSelect;
-                $(ElementChoice).addClass('Warning');
-                ShakeDiv(ElementChoice);
-                RemoveWarning(ElementChoice);
+                ShakeDiv(OptionSelect);
             };
         });
     };
 
-    function EvenPlayer(OptionSelect){
-        arrayElementsEven.push(OptionSelect);
-        arrayElements.push(OptionSelect);  
+    function ActionPlayer(idPlayer, elementChoice){
 
-        ElementChoice = "#" + OptionSelect;
+        const arrayPromisse = (idPlayer == "Odd")? arrayElementsOdd: arrayElementsEven;
 
-        $(ElementChoice).html('X');
-            
-        $('#jogada').html('');
-        $('#jogada').html('O');
+        arrayPromisse.push(elementChoice.replace('#',''));
+        arrayElements.push(elementChoice.replace('#',''));  
 
-        if(arrayElementsEven.length >= 3){//
-            if(arrayElementsEven.length == 4){// Remove o primeiro elemento e a classe de aviso
-                ElementChoice = "#" + arrayElements[0];
-                $(ElementChoice).removeClass('WarningLast');
-                $(ElementChoice).html('');
+        $(elementChoice).html('O');
+
+        if(idPlayer == "Odd"){
+            $(elementChoice).html('O');
+            $('#jogada').html('X');
+        }else{
+            $(elementChoice).html('X');
+            $('#jogada').html('O');
+        }
+
+        if(arrayPromisse.length >= 3){//
+            if(arrayPromisse.length == 4){// Remove o primeiro elemento e a classe de aviso
+                elementChoice = "#" + arrayElements[0];
+                RemoveWarning(elementChoice);
                 let indice = arrayElements.indexOf(arrayElements[0]);
                 arrayElements.splice(indice, 1);
-                arrayElementsEven.shift(); // Remove o primeiro elemento quando chegar em 4        
+                arrayPromisse.shift(); // Remove o primeiro elemento quando chegar em 4        
             }
-            if(arrayElementsEven.length == 3){// Coloca a classe de aviso que aquela opção é a ultima
-                if(ValidResult(arrayElementsEven)){
-                    ShowWinner("Even",arrayElementsEven);
+            if(arrayPromisse.length == 3){// Coloca a classe de aviso que aquela opção é a ultima
+                if(ValidResult(arrayPromisse)){
+                    ShowWinner(idPlayer, arrayPromisse);
                 }
-                ElementChoice = "#" + arrayElementsEven[0];
-                $(ElementChoice).addClass('WarningLast');
+                elementChoice = "#" + arrayPromisse[0];
+                $(elementChoice).addClass('WarningLast');
             };
         };
         player ++; 
-    };
 
-    function OddPlayer(OptionSelect){
-        arrayElementsOdd.push(OptionSelect);
-        arrayElements.push(OptionSelect);  
-
-        ElementChoice = "#" + OptionSelect;
-
-        $(ElementChoice).html('O');
-
-        $('#jogada').html('');
-        $('#jogada').html('X');
-
-        if(arrayElementsOdd.length >= 3){//
-            if(arrayElementsOdd.length == 4){// Remove o primeiro elemento e a classe de aviso
-                ElementChoice = "#" + arrayElements[0];
-                $(ElementChoice).removeClass('WarningLast');
-                $(ElementChoice).html('');
-                let indice = arrayElements.indexOf(arrayElements[0]);
-                arrayElements.splice(indice, 1);
-                arrayElementsOdd.shift(); // Remove o primeiro elemento quando chegar em 4        
-            }
-            if(arrayElementsOdd.length == 3){// Coloca a classe de aviso que aquela opção é a ultima
-                if(ValidResult(arrayElementsOdd)){
-                    ShowWinner("Odd", arrayElementsOdd);
-                }
-                ElementChoice = "#" + arrayElementsOdd[0];
-                $(ElementChoice).addClass('WarningLast');
-            };
-        };
-        player ++; 
-    };
+    }
 
     function Reiniciar(All) {
-
+        
         if(All){
             $('#PlayerX').html(0);
             $('#PlayerO').html(0);
@@ -123,10 +97,14 @@ $(document).ready(function() {
         $('.cell').html('');
         $('.cell').removeClass('Winner');
         $('#jogada').html('X');
+        HabilitaCliques();
     };
 
     function RemoveWarning(id){
-        setTimeout(function() {$(id).removeClass('Warning');}, 1000); //1 sec
+        setTimeout(function() {
+            $(id).removeClass('WarningLast');
+            $(id).html('');    
+        ;}, 100); //1 sec
     };
 
     function ValidResult(options) {
@@ -153,21 +131,21 @@ $(document).ready(function() {
     }
 
     function ShowWinner(Winner, array){  
+
+        BloqueiaCliques();
+
         for(let i = 0; i < array.length; i++){
             option = '#'+ array[i];
             $(option).addClass('Winner');
         };
+
         if(Winner == "Even"){
-            PointsEven ++;      
-            $('#PlayerX').html('');
-            $('#PlayerX').html(PointsEven);
+            $('#PlayerX').html(PointsEven ++);
         }else if(Winner == "Odd"){
-            PointsOdd ++;
-            $('#PlayerO').html('');
-            $('#PlayerO').html(PointsOdd); 
+            $('#PlayerO').html(PointsOdd ++); 
         }
 
-        setTimeout(function() {Reiniciar();}, 2000); //1 sec
+        setTimeout(function() {Reiniciar();}, 3000); //1 sec
     };
 
     function isEven(number) {
@@ -188,4 +166,19 @@ $(document).ready(function() {
             div.animate({ left: distancia }, intervalo).animate({ left: -distancia }, intervalo * 2).animate({ left: 0 }, intervalo);
         };
     };
+
+    function BloqueiaCliques(){
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.style.pointerEvents = 'none';
+            cell.style.cursor = 'default';
+        });
+    }
+
+    function HabilitaCliques(){
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.style.pointerEvents = 'auto';
+            cell.style.cursor = 'pointer';
+        });
+    }
+
 });
