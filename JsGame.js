@@ -96,6 +96,7 @@ $(document).ready(function() {
         $('.cell').removeClass('WarningLast');
         $('.cell').html('');
         $('.cell').removeClass('Winner');
+        $('.cell').addClass('cell');
         $('#jogada').html('X');
         HabilitaCliques();
     };
